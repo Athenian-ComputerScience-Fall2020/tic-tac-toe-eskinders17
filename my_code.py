@@ -29,18 +29,21 @@ def game():
         print("It's now your turn " + turn)
         
         print("Enter U1, U2, U3, M1, M2, M3, L1, L2, L3")
+        
         move = input()        
         
-    
-        if theBoard[move] == ' ':
-            theBoard[move] = turn
-            count += 1
+        try:
+            if theBoard[move] == ' ':
+                theBoard[move] = turn
+                count += 1
+            else:
+                print("That place is already, try a different spot")
+                continue
+        except:
+            print("Invalid Input, Plse try again.")
+            continue
 
         
-
-        else:
-            print("That place is already, try a different spot")
-            break
 
         
         
@@ -98,24 +101,27 @@ def game():
 
         if count == 9:
             print("Game Over")                
-            print("It's a Tie")
+            print("It's a Tie!!")
+            break
 
+      
         if turn =='X':
             turn = 'O'
         else:
             turn = 'X'        
     
-    xyz = input("Do want to play Again?(yes/no)")
-    if xyz == "yes" or xyz == "Yes":  
+    
+    restart = input("Do want to play Again?(y/n)")
+    if restart == "y" or restart == "Y":  
         for key in board_keys:
             theBoard[key] = " "
 
         game()
+    else:
+        print("Good Bye")
 
 if __name__ == "__main__":
     game()
-
-
 
 
 
